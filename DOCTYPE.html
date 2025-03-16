@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ランダムキャラ設定メーカー</title>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 600px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .result {
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            height: 400px;
+            overflow: auto;
+            color: #333;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ランダムキャラ設定メーカー</h1>
+        <button id="generateBtn">キャラ設定を生成</button>
+        <div class="result" id="characterResult">
+            ここにキャラ設定が表示されます。
+        </div>
+    </div>
+
+    <script>
+        // キャラクター要素（選択肢をさらに増加）
+        const names = ['アヤ', 'ユウキ', 'カナ', 'リョウ', 'ナオ', 'ソウスケ', 'ユイ', 'ケンジ', 'ミカ', 'タクヤ', 'ハル', 'ナツキ', 'リナ', 'カナタ', 'アオイ', 'レイ', 'シン', 'アズサ', 'ハルキ', 'サクラ', 'エリカ'];
+        const personalities = ['優しい', '冷静', 'おっとり', '積極的', '面倒臭がり', 'お調子者', '真面目', '社交的', '内気', '好奇心旺盛', 'わがまま', '自由奔放', '冷徹', '素直', 'おおらか', '人懐っこい', '頑固', 'ドジっ子', '優柔不断'];
+        const appearances = ['短髪で明るい色の髪', 'ロングヘアの黒髪', '眼鏡をかけた', 'スポーツをしている', '金髪のカールした髪', '長身でスタイルが良い', '猫耳付き', '小柄で可愛らしい', '筋肉質でたくましい', 'フード付きのジャケットを着ている', '顔に傷がある', 'ピアスをしている', '緑色の髪', '青い瞳', '紫色の髪', '背が低い', '目が細い', '顔にそばかすがある'];
+        const hobbies = ['音楽を聴く', '読書', '料理', '釣り', '映画鑑賞', '運動', 'アニメを観る', 'ゲームをする', '絵を描く', '旅行', '写真を撮る', '登山', 'ダンス', '手芸', 'ブログを書く', '料理を作る', '科学実験'];
+        const physicalTraits = ['背が高い', '小柄', '筋肉質', '細身', '太め', '目が大きい', '笑顔が特徴的', '顔が整っている', '手足が長い', '肌が白い', '健康的な肌', '傷がある', '爪が長い', '髪がサラサラ', '肩が広い', '胸が大きい', '足が速い'];
+        const goals = ['世界を旅したい', '力を強くしたい', '幸せな家族を作りたい', '大富豪になりたい', '復讐を果たしたい', '夢を追いかけたい', '自由になりたい', '人助けをしたい', '成長したい', '過去を忘れたい', '新しい技術を学びたい', '特別な人と幸せになりたい', '有名になりたい', '発明をしたい', '社会を変えたい', '平和を守りたい'];
+
+        // ランダムにキャラクターを生成する関数
+        function generateCharacter() {
+            const name = names[Math.floor(Math.random() * names.length)];
+            const personality = personalities[Math.floor(Math.random() * personalities.length)];
+            const appearance = appearances[Math.floor(Math.random() * appearances.length)];
+            const hobby = hobbies[Math.floor(Math.random() * hobbies.length)];
+            const physicalTrait = physicalTraits[Math.floor(Math.random() * physicalTraits.length)];
+            const goal = goals[Math.floor(Math.random() * goals.length)];
+
+            const characterDescription = `
+                <strong>名前:</strong> ${name}<br>
+                <strong>性格:</strong> ${personality}<br>
+                <strong>外見:</strong> ${appearance}<br>
+                <strong>趣味:</strong> ${hobby}<br>
+                <strong>身体的特徴:</strong> ${physicalTrait}<br>
+                <strong>目標:</strong> ${goal}
+            `;
+            document.getElementById('characterResult').innerHTML = characterDescription;
+        }
+
+        // ボタンにクリックイベントを追加
+        document.getElementById('generateBtn').addEventListener('click', generateCharacter);
+    </script>
+
+</body>
+</html>
